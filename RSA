@@ -1,0 +1,14 @@
+leeseulchoi@leeseului-MacBookPro keystore % keytool -genkeypair -alias apiEncryptionKey -keyalg RSA -dname "CN=Choi Lee Seoul, OU=API Development, O=joneconsulting.co.kr, L=Seoul, C=KR" -keystore "test123" -keystore apiEncryptionKey.jks
+- 비밀번호는 최소 6자리이상이어야함
+- keytool을 이용한 RSA key 만들기
+- private key 생성완료
+
+keytool -list -keystore apiEncryptionKey.jks -v
+- 생성된 key파일 보기
+- -v : 파일의 상세 정보보기 옵션
+
+keytool -export -alias apiEncryptionKey -keystore apiEncryptionKey.jks -rfc -file trustServer.cer
+- public key값 가져오기
+
+keytool -import -alias trustServer -file trustServer.cer -keystore publicKey.jks
+- 파일의 확장자 jks로 바꾸기
